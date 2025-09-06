@@ -1,0 +1,11 @@
+{
+  "framework": "nextjs",
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
+  "env": {
+    "NEXTAUTH_URL": "https://patisserie-lycee.vercel.app",
+    "NEXTAUTH_SECRET": "f9wW0H0mtFDUeAG738nHV7HX3IYnkqBdSPHWhrRWuK0=",
+    "MONGODB_URI": "mongodb+srv://patisserie:patisserie123@cluster0.mongodb.net/patisserie?retryWrites=true&w=majority"
+  }
+}
