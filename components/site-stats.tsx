@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { Card } from './ui/card'
-import { Award, Heart, ScrollText, Users } from 'lucide-react'
+import { Award, Heart, ScrollText, Star, Users } from 'lucide-react'
 
 interface Stats {
   totalRecipes: number
@@ -58,13 +58,12 @@ export function SiteStats() {
           <h3 className="text-4xl font-bold mb-2">{stats.totalLikes}</h3>
           <p className="text-muted-foreground">J'aime</p>
         </Card>
-
-        {/* Note Moyenne */}
+        {/* Total Favoris */}
         <Card className="p-6 flex flex-col items-center text-center hover:shadow-lg transition-shadow">
-          <Award className="w-12 h-12 text-primary mb-4" />
-          <h3 className="text-4xl font-bold mb-2">{stats.averageRating}</h3>
-          <p className="text-muted-foreground">Note Moyenne</p>
-        </Card>
+          <Star className="w-12 h-12 text-primary mb-4" />
+          <h3 className="text-4xl font-bold mb-2">{stats.totalFavorites}</h3>
+          <p className="text-muted-foreground">Favoris</p>
+        </Card> 
       </div>
     </div>
   )

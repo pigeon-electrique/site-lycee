@@ -18,7 +18,8 @@ import {
   Calendar,
   Award,
   Heart,
-  BookOpen
+  BookOpen,
+  Star
 } from 'lucide-react'
 import Link from 'next/link'
 
@@ -188,9 +189,9 @@ export default function ProfilPage() {
             <Card>
               <CardContent className="pt-6">
                 <div className="flex items-center space-x-2">
-                  <Award className="h-8 w-8 text-yellow-500" />
+                  <Star className="h-8 w-8 text-yellow-500" />
                   <div>
-                    <p className="text-2xl font-bold">{stats?.favoriteRecipes}</p>
+                    <p className="text-2xl font-bold">{stats?.favoriteCount}</p>
                     <p className="text-sm text-muted-foreground">Favoris</p>
                   </div>
                 </div>

@@ -46,6 +46,13 @@ export async function GET(request: NextRequest) {
       .limit(limit)
       .toArray()
 
+      // Initialiser les likes à 0 si pas défini
+    recipes.forEach(recipe => {
+      if (recipe.likes === undefined) {
+        recipe.likes = 0
+      }
+    })
+
     return NextResponse.json({
       recipes,
       pagination: {

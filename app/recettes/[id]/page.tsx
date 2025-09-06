@@ -9,6 +9,7 @@ import { Badge } from '@/components/ui/badge'
 import { ChefHat, Clock, Users, Star, Heart, ArrowLeft, Play, User } from 'lucide-react'
 import Link from 'next/link'
 import { IngredientsCalculator } from '@/components/ingredients-calculator'
+import { RecipeActions } from '@/components/recipe-actions'
 
 interface Recipe {
   id: string
@@ -29,6 +30,7 @@ interface Recipe {
   }>
   steps: RecipeStep[]
   rating: number
+  likes: number
   createdAt: string
 }
 
@@ -45,7 +47,6 @@ export default function RecipeDetailPage() {
   const params = useParams()
   const [recipe, setRecipe] = useState<Recipe | null>(null)
   const [loading, setLoading] = useState(true)
-  const [isFavorite, setIsFavorite] = useState(false)
 
   useEffect(() => {
     const fetchRecipe = async () => {
@@ -132,6 +133,10 @@ export default function RecipeDetailPage() {
               <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
               <span className="text-sm">{recipe.rating}</span>
             </div>
+            <div className="flex items-center space-x-1">
+              <Heart className="h-4 w-4 text-red-500" />
+              <span className="text-sm">{recipe.likes || 0} j'aime</span>
+            </div>
           </div>
           
           <h1 className="text-4xl font-bold mb-4">{recipe.title}</h1>
@@ -158,25 +163,21 @@ export default function RecipeDetailPage() {
                 <p className="font-semibold">{recipe.cookTime} min</p>
               </div>
             </div>
-
           </div>
           
           {/* Actions */}
-          <div className="flex gap-4">
+          <div className="flex flex-wrap gap-4">
             <Button asChild size="lg">
               <Link href={`/recettes/${recipe.id}/cook`}>
                 <Play className="mr-2 h-5 w-5" />
                 Faire la recette
               </Link>
             </Button>
-            <Button 
-              variant="outline" 
-              size="lg"
-              onClick={() => setIsFavorite(!isFavorite)}
-            >
-              <Heart className={`mr-2 h-5 w-5 ${isFavorite ? 'fill-red-500 text-red-500' : ''}`} />
-              {isFavorite ? 'Retiré des favoris' : 'Ajouter aux favoris'}
-            </Button>
+            
+            <RecipeActions 
+              recipeId={recipe.id}
+              initialLikes={recipe.likes || 0}
+            />
           </div>
         </div>
 
