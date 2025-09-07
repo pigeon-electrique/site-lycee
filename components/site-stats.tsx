@@ -2,14 +2,14 @@
 
 import { useEffect, useState } from 'react'
 import { Card } from './ui/card'
-import { Award, Heart, ScrollText, Star, Users } from 'lucide-react'
+import { Heart, ScrollText, Users, Star } from 'lucide-react'
 
 interface Stats {
   totalRecipes: number
   totalUsers: number
   totalLikes: number
+  totalFavorites: number
   popularCategories: Array<{ _id: string; count: number }>
-  averageRating: number
 }
 
 export function SiteStats() {
@@ -58,12 +58,13 @@ export function SiteStats() {
           <h3 className="text-4xl font-bold mb-2">{stats.totalLikes}</h3>
           <p className="text-muted-foreground">J'aime</p>
         </Card>
+
         {/* Total Favoris */}
         <Card className="p-6 flex flex-col items-center text-center hover:shadow-lg transition-shadow">
           <Star className="w-12 h-12 text-primary mb-4" />
           <h3 className="text-4xl font-bold mb-2">{stats.totalFavorites}</h3>
           <p className="text-muted-foreground">Favoris</p>
-        </Card> 
+        </Card>
       </div>
     </div>
   )
